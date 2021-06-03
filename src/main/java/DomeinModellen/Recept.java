@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Recept {
     private String naam;
-    private int duratie;
+    private String duratie;
     private int aantalLikes;
     private int aantalDisLikes;
 
@@ -20,11 +20,11 @@ public class Recept {
         return categorie;
     }
 
-    public int getDuratie() {
+    public String getDuratie() {
         return duratie;
     }
 
-    public Recept(String naam,int duratie,String categorie){
+    public Recept(String naam,String duratie,String categorie){
         this.naam=naam;
         this.duratie=duratie;
         this.categorie=categorie;

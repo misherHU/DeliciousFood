@@ -22,7 +22,7 @@ public class DomeinTest{
     @BeforeEach
     public void initialize(){
         likes=new ArrayList<>();
-        recept=new Recept("batat",15,"snacks");
+        recept=new Recept("batat","15 minuten","snacks");
 
         likes.add(recept);
         klant= new Klant("misher","meterman","man","mishernon@hotmail.com","wiwi",likes);

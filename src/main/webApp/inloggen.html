@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+
+    </header>
+
+    <main>
+        <span>
+            <img style = "position:relative; left:180px; top:2px;" src="DeliciuosFoodLogo.PNG" alt="">
+        <h1>Inloggen</h1>
+
+        <form id="loginform">
+        <label for="username">first Name:</label>
+        <input type="text" id="username" name="username">
+        <label for="passwoord">passwoord</label>
+        <input type="password" id="passwoord" name="passwoord">
+        <button  id="loginButton" type="button" > Log in</button>
+        </form>
+
+
+        </span>
+        
+        <script>
+            document.getElementById("loginButton").addEventListener('click',function(){
+
+                var formData = new FormData(document.querySelector("#loginform"));
+                var encData = new URLSearchParams(formData.entries());
+
+                fetch("/restservices/authentication" ,{method: "POST", body:encData})
+                .then(function(response){
+                    console.log("in de then");
+                    if (response.ok){
+                        console.log('ingelogd');
+                        return response.json();
+                    }
+
+                    //else throw "wrong username/password";
+                })
+                .then(myJson => window.sessionStorage.setItem("myJWT",myJson.JWT))
+                .catch(error=> console.log(error))
+            })
+
+        </script>
+
+
+
+    </main>
+
+    <footer>
+        
+    </footer>
+    
+</body>
+
+
+</html>

@@ -1,0 +1,71 @@
+
+
+
+.types:link, .types:visited {
+    background-color: white;
+    color: black;
+    border: 2px solid green;
+    padding: 10px 20px;
+    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .types:hover, .types:active {
+    background-color: green;
+    color: white;
+  }
+  .restaurant {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    padding: 2px;
+    border-radius: 2px;
+    border: 1px solid #ebebeb;
+    cursor: pointer;
+    margin: 8px 0;
+    min-height: 120px;
+    overflow: hidden;
+}
+
+.container{
+  position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    padding: 2px;
+    border-radius: 2px;
+    border: 1px solid #ebebeb;
+    cursor: pointer;
+    margin: 8px 0;
+    min-height: 120px;
+    overflow: hidden;
+
+  
+}
+
+.container-item{
+  color:black;
+}
+
+
+.homeBackground {
+  height: 50px;
+  width: 50%;
+}
+
+.homeBackground_img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.backk{
+  background-image: url('dfhomebackground.PNG');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
