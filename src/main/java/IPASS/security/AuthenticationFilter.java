@@ -1,5 +1,6 @@
-package security;
+package IPASS.security;
 
+import IPASS.webservices.AuthenticationResource;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.JwtParser;
@@ -12,11 +13,11 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.ext.Provider;
-import java.io.IOException;
 
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class AuthenticationFilter implements ContainerRequestFilter {
+
     @Override
     public void filter(ContainerRequestContext requestCtx) {
 
@@ -35,6 +36,9 @@ public class AuthenticationFilter implements ContainerRequestFilter {
                 Claims claims = parser.parseClaimsJws(token).getBody();
                 //PersistenceManager.saveWorldToAzure();
                 String user = claims.getSubject();
+                System.out.println("user " +user);
+                System.out.println("jwt token validated");
+                //my security context user aanmaken
                 msc = new MySecurityContext(SecurityManager.getInstance().getUserByName(user), scheme);
 
             } catch (JwtException | IllegalArgumentException e) {

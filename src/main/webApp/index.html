@@ -12,11 +12,20 @@
 <body>
     <header>
         <a href="index.html"><img src="DeliciuosFoodLogo.PNG" alt="DeliciuosFoodLogo"></a>
-        <label style="position: relative; left: 645px; bottom: 140px;" for="zoekOpdracht">Zoeken</label>
-        <input style="position: relative; left: 650px; bottom: 140px;" type="text" id="zoekOpdracht" name="zoekOpdracht">
-        <button style="position: relative; left: 660px; bottom: 140px;" type="submit">Zoeken</button>
-        <a style="position: relative; left:740px; bottom: 140px;" href="burger5min.html" id="accountViewButton" class="types" onclick="return false"> Account</a>
-        <a style="position: relative; left:750px; bottom: 140px;" href="burger5min.html" id="logInButton" class="types" onclick="return false"> Inloggen</a>
+        <span>
+            <form id="zoekOpdrachtForm">
+            <label style="position: relative; left: 645px; bottom: 140px;" for="zoekOpdracht">Zoeken</label>
+            <input style="position: relative; left: 650px; bottom: 140px;" type="text" id="zoekOpdracht" name="zoekOpdracht">
+            <button style="position: relative; left: 660px; bottom: 140px;" type="submit" id="zoekButton" onclick="return false">Zoeken</button>
+        </form>
+        </span>
+        <span>
+             <a style="position: relative; left:740px; bottom: 140px;" href="accountInfo.html" id="accountViewButton" class="types" > Account</a>
+        <a style="position: relative; left:750px; bottom: 140px;" href="inloggen.html" id="logInButton" class="types" > Inloggen</a>
+        </span>
+
+
+
         
         
         <div style="background: green">
@@ -32,13 +41,13 @@
 
 
         <div style="margin: 12px;">
-        <a href="" id='burgerCategorieSorteren' class="types" onclick="return false"> Burger</a>
-        <a href="burger5min.html" id="sushiCategorieSorteren" class="types" onclick="return false"> Sushi</a>
-        <a href="burger5min.html" id="steakCategorieSorteren" class="types" onclick="return false"> Steak</a>
-        <a href="burger5min.html" id="pastaCategorieSorteren" class="types" onclick="return false"> Pasta</a>
-        <a href="burger5min.html" id="spareribsCategorieSorteren" class="types" onclick="return false"> Spareribs</a>
-        <a href="burger5min.html" id="chickenCategorieSorteren" class="types" onclick="return false"> Chicken</a>
-        <a href="burger5min.html" id="pizzaCategorieSorteren" class="types" onclick="return false"> Pizza</a>
+        <a href="" id='burgerCategorieSorteren' class="types" onclick="return false">Burger</a>
+        <a href="burger5min.html" id="sushiCategorieSorteren" class="types" onclick="return false">Sushi</a>
+        <a href="burger5min.html" id="steakCategorieSorteren" class="types" onclick="return false">Steak</a>
+        <a href="burger5min.html" id="pastaCategorieSorteren" class="types" onclick="return false">Pasta</a>
+        <a href="burger5min.html" id="spareribsCategorieSorteren" class="types" onclick="return false">Spareribs</a>
+        <a href="burger5min.html" id="chickenCategorieSorteren" class="types" onclick="return false">Chicken</a>
+        <a href="burger5min.html" id="pizzaCategorieSorteren" class="types" onclick="return false">Pizza</a>
         </div>
         
         
@@ -49,19 +58,19 @@
         <span>
 
         <div>
-        <input type="radio" name="duratie" value="15 minuten"> 15 minuten
+        <input type="radio" name="kiesDuratie" value="15 minuten"> 15 minuten
         </div>
 
         <div>
-        <input type="radio" name="duratie" value="30 minuten"> 30 minuten
+        <input type="radio" name="kiesDuratie" value="30 minuten"> 30 minuten
         </div>
 
         <div>
-            <input type="radio" name="duratie" value="1 uur"> 1 uur
+            <input type="radio" name="kiesDuratie" value="1 uur"> 1 uur
         </div>
 
         <div>
-            <input type="radio" name="duratie" value="Any" checked> Any
+            <input type="radio" name="kiesDuratie" value="Any" checked> Any
         </div>
 
         
@@ -69,7 +78,7 @@
         </span>
         
         
-            
+
 
         
         <span id="resultatenSpan">
@@ -94,6 +103,15 @@
                 <a style="margin: 10px; text-decoration-color: black; text-decoration-line: none" href="burger5min.html" >Double cheeseBurger</a>
                 <p style="margin: 10px;">🕐Duration: 15 minuut</p>
             </span>
+
+        </div>
+            <div class="container">
+            <div class="container-item"><img style="height: 150px;" src="https://d38trduahtodj3.cloudfront.net/images.ashx?t=ig&rid=VisitLaredo&i=pino_burgers.jpg" alt="burger foto"></div>
+            <span>
+<!--                <p style="margin: 10px;">  Burger gewoon</p>-->
+                <a id="testingInfoFunctie" name="Triple Smash with Bacon & Cheese" style="margin: 10px; text-decoration-color: black; text-decoration-line: none" href="ReceptInformatie.html" >Triple Smash with Bacon & Cheese</a>
+                <p style="margin: 10px;">🕐Duration: 15 minuut</p>
+            </span>
         </div>
 
 
@@ -101,7 +119,7 @@
             <div class="container-item"><img style="height: 150px;" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/yf7ngkwhelarg1ujk38n" alt="burger foto"></div>
             <span>
 <!--                <p style="margin: 10px;">  Burger gewoon</p>-->
-                <a style="margin: 10px; text-decoration-color: black; text-decoration-line: none" href="burger5min.html" >Onion cheeseBurger</a>
+                <a style="margin: 10px; text-decoration-color: #000000; text-decoration-line: none" href="burger5min.html" >Onion cheeseBurger</a>
                 <p style="margin: 10px;">🕐Duration: 30 minuten</p>
             </span>
         </div>

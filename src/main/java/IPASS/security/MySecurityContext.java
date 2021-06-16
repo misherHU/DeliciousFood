@@ -1,18 +1,21 @@
-package security;
+package IPASS.security;
 
+
+import IPASS.DomeinModellen.Account;
 
 import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
 
 public class MySecurityContext implements SecurityContext {
-    private MyUser user;
+    private Account user;
     private String scheme;
 
-    public MySecurityContext(MyUser user, String scheme) {
+    public MySecurityContext(Account user, String scheme) {
         this.user = user;
         this.scheme = scheme;
     }
 
+    // je krijgt de user terug
     @Override
     public Principal getUserPrincipal() {
         return this.user;

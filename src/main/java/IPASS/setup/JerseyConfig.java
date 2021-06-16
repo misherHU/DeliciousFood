@@ -1,13 +1,15 @@
-package setup;
+package IPASS.setup;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
-import javax.annotation.security.RolesAllowed;
+import javax.ws.rs.ApplicationPath;
 
+
+@ApplicationPath("restservices")
 public class JerseyConfig extends ResourceConfig {
 public JerseyConfig(){
-    packages("Webservicess");
+    packages("IPASS/webservices","IPASS.security");
     register(RolesAllowedDynamicFeature.class);
 
 }

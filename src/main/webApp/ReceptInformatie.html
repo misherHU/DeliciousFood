@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recept informatie</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-<!--    <script type="module" src="ReceptInformatie.js"></script>-->
-
-    <title>Document</title>
+    <script type="module" src="ReceptInformatie.js"></script>
 </head>
 <body>
 <header>
@@ -38,9 +35,9 @@
 
 
 
-    <span id="youtubeVideo">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/3yX_bpbCmfo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <span>
 
+            <iframe id="youtubeVideo" width="560" height="315" src="https://www.youtube.com/embed/CBNyxH_NSDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </span>
 
 
@@ -48,8 +45,25 @@
         <div>
             <h2>Ingridients:</h2>
         </div>
-        <div id="receptIngredienten" style="border: 2px solid green">
+        <div id="receptIngredientenDiv" style="border: 2px solid green">
             <p>hier komen de hele recept staan</p>
+            <ul id="receptIngredientenList">
+
+            </ul>
+        </div>
+
+    </span>
+
+
+
+    <span>
+        <div>
+            <h2>Stappen:</h2>
+        </div>
+        <div id="receptStappenDiv" style="border: 2px solid green">
+            <ul id="receptStappenList">
+
+            </ul>
         </div>
 
     </span>

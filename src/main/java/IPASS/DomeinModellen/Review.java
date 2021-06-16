@@ -1,8 +1,7 @@
-package DomeinModellen;
+package IPASS.DomeinModellen;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class Review {
     private Klant account;

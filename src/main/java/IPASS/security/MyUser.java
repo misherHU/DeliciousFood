@@ -1,4 +1,4 @@
-package security;
+package IPASS.security;
 
 import java.io.Serializable;
 import java.security.Principal;

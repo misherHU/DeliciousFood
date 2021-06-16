@@ -1,4 +1,6 @@
-package security;
+package IPASS.security;
+
+import IPASS.DomeinModellen.Account;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,21 +23,21 @@ public class SecurityManager implements Serializable {
         return true;
     }
 
-    private List<MyUser> allUsers = new ArrayList<>();
+    //private List<MyUser> allUsers = new ArrayList<>();
 
-    public boolean registerUser(MyUser toAdd){
-        if(!this.allUsers.contains(toAdd))  return this.allUsers.add(toAdd);
-        return false;
-    }
+//    public boolean registerUser(MyUser toAdd){
+//        if(!this.allUsers.contains(toAdd))  return this.allUsers.add(toAdd);
+//        return false;
+//    }
 
-    public MyUser getUserByName(String username) {
-        return this.allUsers.stream().filter(user -> user.getName().equals(username)).findFirst().orElse(null);
+    public Account getUserByName(String username) {
+        return Account.getAlleAccounten().stream().filter(user -> user.getName().equals(username)).findFirst().orElse(null);
     }
 
     public String validateLogin(String username, String password){
         if(username==null || username.isBlank() || password == null || password.isBlank()) return null;
-        var myUser = this.getUserByName(username);
-        if(myUser == null) return null;
-        return myUser.checkPassword(password) ? myUser.getRole() : null;
+        var account = this.getUserByName(username);
+        if(account == null) return null;
+        return account.checkPassword(password) ? account.getRole() : null;
     }
 }

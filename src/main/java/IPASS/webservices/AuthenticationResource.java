@@ -1,5 +1,6 @@
-package security;
+package IPASS.webservices;
 
+import IPASS.security.SecurityManager;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -12,20 +13,22 @@ import java.security.Key;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Calendar;
 
-@Path("/authentication")
+@Path("authentication")
 public class AuthenticationResource {
     public static final Key key = MacProvider.generateKey();
+    public static String huidigeUser;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response authenticateUser(@FormParam("username") String username,
-                                     @FormParam("passwoord") String password) {
+                                     @FormParam("passwoord") String passwoord) {
         try {
             System.out.println("begin auth");
-            String role = SecurityManager.getInstance().validateLogin(username, password);
+            String role = SecurityManager.getInstance().validateLogin(username, passwoord);
             if (role == null) throw new IllegalArgumentException("No user found or invalid credentials");
             String token = createToken(username, role);
+            huidigeUser=username;
             System.out.println("na create token");
             SimpleEntry<String, String> JWTText = new SimpleEntry<>("JWT", token);
             return Response.ok(JWTText).build();
@@ -45,4 +48,9 @@ public class AuthenticationResource {
                 .signWith(SignatureAlgorithm.HS512, key)
                 .compact();
     }
+
+
+
+
+
 }
