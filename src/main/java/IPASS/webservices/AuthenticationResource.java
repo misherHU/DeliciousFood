@@ -26,6 +26,7 @@ public class AuthenticationResource {
         try {
             System.out.println("begin auth");
             String role = SecurityManager.getInstance().validateLogin(username, passwoord);
+            System.out.println("validated");
             if (role == null) throw new IllegalArgumentException("No user found or invalid credentials");
             String token = createToken(username, role);
             huidigeUser=username;

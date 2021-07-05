@@ -1,5 +1,6 @@
 package IPASS.persistence;
 
+import IPASS.DomeinModellen.Account;
 import IPASS.DomeinModellen.Recept;
 import com.azure.storage.blob.BlobClient;
 import com.azure.storage.blob.BlobContainerClient;
@@ -22,9 +23,31 @@ public class PersistenceManager {
 
 
 
-    public static void loadReceptenFromAzure(String blobNaam) throws IOException, ClassNotFoundException {
+    public static void loadReceptenFromAzure() throws IOException, ClassNotFoundException {
         if (blobContainer.exists()) {
-            BlobClient blob = blobContainer.getBlobClient(blobNaam);
+            BlobClient blob = blobContainer.getBlobClient("recepten");
+
+            if (blob.exists()) {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                blob.download(baos);
+
+                ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+                ObjectInputStream ois = new ObjectInputStream(bais);
+                Recept.alleRecepten=(ArrayList<Recept>) ois.readObject();
+                //World loadedWorld =
+                //World.setWorld(loadedWorld);
+                //System.out.println();
+
+                baos.close();
+                ois.close();
+            } else throw new IllegalStateException("container not found, loading default data");
+        }
+    }
+
+
+    public static void loadAccountenFromAzure() throws IOException, ClassNotFoundException {
+        if (blobContainer.exists()) {
+            BlobClient blob = blobContainer.getBlobClient("accounts");
 
             if (blob.exists()) {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -33,8 +56,12 @@ public class PersistenceManager {
                 ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
                 ObjectInputStream ois = new ObjectInputStream(bais);
 
-                //World loadedWorld = (World)ois.readObject();
+                ArrayList<Account>loadedAccounten=(ArrayList<Account>) ois.readObject();
+                Account.setAlleAccounten(loadedAccounten);
+                System.out.println(Account.getAlleAccounten().get(1).getNaam());
+                //World loadedWorld =
                 //World.setWorld(loadedWorld);
+                //System.out.println();
 
                 baos.close();
                 ois.close();
@@ -42,21 +69,17 @@ public class PersistenceManager {
         }
     }
 
-    public static void saveDataToAzure() throws IOException, CloneNotSupportedException {
+
+
+
+    public static void saveReceptenToAzure() throws IOException, CloneNotSupportedException {
         System.out.println("begin van saveData to azure");
 
         if (!blobContainer.exists()) {
             blobContainer.create();
         }
         System.out.println("na het createn");
-//        ArrayList<Recept> alless=new ArrayList<>();
-//        alless.add(new Recept("Korean Fried Chicken","15 minuten","Chicken"));
-//        alless.add(new Recept("One Pan Chicken and Broccoli Stir Fry","30 minuten","Chicken"));
-//        alless.add(new Recept("Roasted Chicken & Potatoes","1 uur","Chicken"));
-//        alless.add(new Recept("Triple Smash w/Bacon & Cheese","15 minuten","Burger"));
-//        alless.add(new Recept("Mexi-Mac Burger","30 minuten","Burger"));
-//        alless.add(new Recept("Shrim Scampi Pasta","15 minuten","Pasta"));
-//        alless.add(new Recept("One-Pan Spanish Garlic Pasta","30 minuten","Pasta"));
+
 
 
 
@@ -69,6 +92,38 @@ public class PersistenceManager {
         ObjectOutputStream oos = new ObjectOutputStream(baos);
         System.out.println("maak oos");
         oos.writeObject(Recept.alleRecepten);
+        System.out.println("na writen");
+
+        byte[] bytez = baos.toByteArray();
+
+        ByteArrayInputStream bais = new ByteArrayInputStream(bytez);
+        blob.upload(bais, bytez.length, true);
+        System.out.println("klaar");
+
+        oos.close();
+        bais.close();
+    }
+
+    public static void saveAccountsToAzure() throws IOException, CloneNotSupportedException {
+        System.out.println("begin van saveData to azure");
+
+        if (!blobContainer.exists()) {
+            blobContainer.create();
+        }
+        System.out.println("na het createn");
+
+
+
+
+        BlobClient blob = blobContainer.getBlobClient("accounts");
+        System.out.println("na get blobclient");
+
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.out.println("maak boas");
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        System.out.println("maak oos");
+        oos.writeObject(Account.getAlleAccounten());
         System.out.println("na writen");
 
         byte[] bytez = baos.toByteArray();

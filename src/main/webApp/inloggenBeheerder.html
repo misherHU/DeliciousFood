@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main>
+<span>
+            <img style = "position:relative; left:180px; top:2px;" src="DeliciuosFoodLogo.PNG" alt="">
+        <h1>Inloggen</h1>
+
+        <form id="loginform">
+        <label for="username">first Name:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="passwoord">passwoord</label>
+        <input type="password" id="passwoord" name="passwoord" required>
+        <button  id="loginButton" type="button" > Log in</button>
+        </form>
+
+
+         <a href="NewAccountPage.html">Nog Geen Account? Maak eentje aan</a>
+
+         <a href="WachtwoordVeranderenPage.html">wachtwoord veranderen</a>
+
+
+
+        </span>
+
+<script>
+    document.getElementById("loginButton").addEventListener('click',function(){
+
+        var formData = new FormData(document.getElementById("loginform"));
+        var encData = new URLSearchParams(formData.entries());
+
+        fetch("restservices/authentication" ,{method: "POST", body:encData})
+            .then(function(response){
+                console.log("in de then");
+                if (response.ok){
+                    console.log('ingelogd');
+                    return response.json();
+                }
+
+                else throw "wrong username/password";
+            })
+            .then(myJson => {
+                window.sessionStorage.setItem("myJWT", myJson.JWT)
+
+                window.location.assign("BeheerderHome.html")
+            }).catch(error=> console.log(error))
+
+
+    })
+
+</script>
+
+
+
+</main>
+
+<footer>
+
+</footer>
+
+</body>
+</html>

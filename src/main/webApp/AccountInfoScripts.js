@@ -1,5 +1,14 @@
-document.addEventListener('load',function (){
+var clickedRecept=null
+function saveReceptNaam(){
+    window.sessionStorage.setItem("clickedRecept",clickedRecept)
+
+}
+
+
+window.addEventListener('load',function (){
     console.log('loaded')
+
+
     var fetchOptions = {
         method: "GET",
         headers: {
@@ -7,15 +16,33 @@ document.addEventListener('load',function (){
         }
     }
 
+
+
     fetch('restservices/profile',fetchOptions)
-        .then(response=>response.json())
+        .then(response=>{
+            if (response.status===200){
+                return response.json()
+            }else document.querySelector('main').innerHTML=`<h1>Restricted! Content is Alleen Beschikbaar Voor Ingelogde Klant</h1>`
+                
+        }
+
+            )
         .then(data=>{
+            console.log(data)
                 let ul=document.getElementById('likedReceptsList')
             for (let i=0;i<data.likedRecepten.length;i++){
-                let newLi=document.createElement('li')
-                let text=document.createTextNode(data.likedRecepten[i])
-                newLi.append(text)
-                ul.append(newLi)
+                let newDiv=document.createElement('div')
+                let newLi=document.createElement('a')
+                newLi.textContent=data.likedRecepten[i].naam
+                newLi.setAttribute("href","ReceptInformatie.html")
+                newLi.setAttribute("name",newLi.textContent)
+                newLi.addEventListener('click',function (){
+                    clickedRecept=newLi.textContent
+                    saveReceptNaam()
+                });
+
+                newDiv.append(newLi)
+                ul.append(newDiv)
             }
         })
 })

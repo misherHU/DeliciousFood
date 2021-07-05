@@ -21,10 +21,10 @@ public class DomeinTest{
     @BeforeEach
     public void initialize() throws CloneNotSupportedException {
         likes=new ArrayList<>();
-        recept=new Recept("batat","15 minuten","snacks","fgbgf");
+        //recept=new Recept("batat","15 minuten","snacks","fgbgf");
 
         likes.add(recept);
-        klant= new Klant("misher","meterman","man","mishernon@hotmail.com","wiwi",likes,"klant");
+        klant= new Klant("misher","meterman","man","mishernon@hotmail.com","wiwi",likes,"klant",new ArrayList<>());
 
 
     }
@@ -33,12 +33,12 @@ public class DomeinTest{
 
     @Test
     public void gebruikersNaamMinderDan20Karakters() throws CloneNotSupportedException {
-        Klant klant= new Klant("misher","meterman","man","mishernon@hotmail.com","wiwi",likes,"klant");
+        Klant klant= new Klant("misher","meterman","man","mishernon@hotmail.com","wiwi",likes,"klant",new ArrayList<>());
         assertTrue("Het gebruikersnaam is te lang", klant.getName().length()<20);
     }
     @Test
     public void wachtwoordMinderDan20Karakters() throws CloneNotSupportedException {
-        Klant klant= new Klant("misher","meterman","man","mishernon@hotmail.com","wiwi",likes,"klant");
+        Klant klant= new Klant("misher","meterman","man","mishernon@hotmail.com","wiwi",likes,"klant",new ArrayList<>());
 
         assertTrue("Het wachtwoord is te lang", klant.getWachtwoord().length()<20);
     }
@@ -46,7 +46,7 @@ public class DomeinTest{
     public void reviewTekstMinderDan200Karakters()
     {
 
-        Review review=new Review(klant,recept,"grbhskugkersbuybkgresuybgkresuybgkrseyugrbeksyugrbsekyugbresyku");
+        Review review=new Review(klant.getName(),"grbhskugkersbuybkgresuybgkresuybgkrseyugrbeksyugrbsekyugbresyku");
         assertTrue("Het review tekst is te lang", review.getTekst().length()<200);
     }
 

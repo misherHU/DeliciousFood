@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <title>Recept informatie</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script type="module" src="ReceptInformatie.js"></script>
+    <script type="module" src="./ReceptInformatie.js"></script>
 </head>
 <body>
 <header>
+    <form  id="zoekOpdrachtForm2">
+        <label style="position: relative; left: 345px; bottom: 140px;" for="zoekOpdracht">Zoeken</label>
+        <input style="position: relative; left: 350px; bottom: 140px;" type="text" id="zoekOpdracht" name="zoekOpdracht">
+        <button style="position: relative; left: 360px; bottom: 140px;" type="submit" id="zoekButton">Zoeken</button>
+    </form>
     <a href="index.html"><img src="DeliciuosFoodLogo.PNG" alt="DeliciuosFoodLogo"></a>
-    <label style="position: relative; left: 645px; bottom: 140px;" for="zoekOpdracht">Zoeken</label>
-    <input style="position: relative; left: 650px; bottom: 140px;" type="text" id="zoekOpdracht" name="zoekOpdracht">
-    <button style="position: relative; left: 660px; bottom: 140px;" type="submit">Zoeken</button>
-    <a style="position: relative; left:740px; bottom: 140px;" href="burger5min.html" id="accountViewButton" class="types" onclick="return false"> Account</a>
+
+    <a style="position: relative; left:740px; bottom: 140px;" href="accountInfo.html" id="accountViewButton" class="types" > Account</a>
     <a style="position: relative; left:750px; bottom: 140px;" href="burger5min.html" id="logInButton" class="types" onclick="return false"> Inloggen</a>
 
 </header>
@@ -35,10 +38,11 @@
 
 
 
-    <span>
 
-            <iframe id="youtubeVideo" width="560" height="315" src="https://www.youtube.com/embed/CBNyxH_NSDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </span>
+<!--    <p><a style="position: relative; left:750px; bottom: 140px;" href="https://www.youtube.com/embed/CBNyxH_NSDs" id="videoLink" class="types"> testKnop</a></p>-->
+
+            <iframe id="youtubeVideo" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 
     <span>
@@ -46,7 +50,6 @@
             <h2>Ingridients:</h2>
         </div>
         <div id="receptIngredientenDiv" style="border: 2px solid green">
-            <p>hier komen de hele recept staan</p>
             <ul id="receptIngredientenList">
 
             </ul>
@@ -67,6 +70,29 @@
         </div>
 
     </span>
+    <p> </p>
+
+
+    <a style="" href="burger5min.html" id="toonReviewForm" class="types" onclick="return false"> Review plaatsen</a>
+    <div id="newReviewDiv">
+
+    </div>
+    <div id="reviewsDiv" style="border-color: green">
+        <div>
+            <h2>Reviews:</h2>
+        </div>
+
+<!--        <div class="container">-->
+<!--            <div class="container-item"></div>-->
+<!--            <span>-->
+<!--&lt;!&ndash;                <p style="margin: 10px;">  Burger gewoon</p>&ndash;&gt;-->
+<!--                <a style="margin: 10px; text-decoration-color: black; text-decoration-line: none" href="burger5min.html" >Henry Van Twee</a>-->
+<!--                <p style="margin: 10px;">dscshfesfikwhfushrefgseurghbrukgxhn,dkurgh.ekgjhoergheroguhlnzd.ufbnv.xdkrughxdugnxriguhx,duirgh</p>-->
+<!--            </span>-->
+
+<!--        </div>-->
+
+    </div>
 
 
 

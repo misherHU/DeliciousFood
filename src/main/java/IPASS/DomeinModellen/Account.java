@@ -1,10 +1,11 @@
 package IPASS.DomeinModellen;
 
+import java.io.Serializable;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Account implements Principal {
+public class Account implements Principal, Serializable {
     private String gebruikersNaam;
     private String wachtwoord;
     private String geslacht;
@@ -34,38 +35,24 @@ public class Account implements Principal {
         return alleAccounten;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Account account = (Account) o;
-        return Objects.equals(gebruikersNaam, account.gebruikersNaam) && Objects.equals(emailAdres, account.emailAdres);
-    }
+    public static Boolean findDuplicate(Account newAccount){
+        boolean returnValue=false;
+        for (Account existingAccount:alleAccounten) {
+             if (existingAccount.gebruikersNaam.equals(newAccount.gebruikersNaam)||existingAccount.emailAdres.equals(newAccount.emailAdres)){
+                 returnValue=true;
+             }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(gebruikersNaam, emailAdres);
-    }
-
-
-
-    public static String validateLoginn(String username,String passwoord){
-        System.out.println("in validateloginn");
-        String returnValue=null;
-        System.out.println(username+" "+passwoord);
-        for (Account account:alleAccounten) {
-            System.out.println(account.getName()+" "+account.wachtwoord);
-
-            if (account.getName().equals(username)&&account.wachtwoord.equals(passwoord)){
-                System.out.println("in if");
-                returnValue= account.role;
-            }
         }
-
-
-
         return returnValue;
 
+    }
+
+    public static void setAlleAccounten(ArrayList<Account> alleAccounten) {
+        Account.alleAccounten = alleAccounten;
+    }
+
+    public void setWachtwoord(String wachtwoord) {
+        this.wachtwoord = wachtwoord;
     }
 
     public String getNaam() {
@@ -84,6 +71,7 @@ public class Account implements Principal {
     public String getName() {
         return gebruikersNaam;
     }
+
 
     public static void addAccount(Account account){
         alleAccounten.add(account);

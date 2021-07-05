@@ -1,21 +1,25 @@
 package IPASS.DomeinModellen;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Review {
-    private Klant account;
-    private Recept recept;
+public class Review implements Serializable {
+    private String gebruikersNaam;
     private String tekst;
     private String datum;
+    public static Review alleReviews;
 
 
-    public Review(Klant account,Recept recept,String tekst){
+
+
+    public Review(String gebruikersNaam,String tekst){
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime nu = LocalDateTime.now();
-        //System.out.println(dateTimeFormatter.format(nu));
-        this.account=account;
-        this.recept=recept;
+        this.gebruikersNaam=gebruikersNaam;
+
         this.tekst=tekst;
         this.datum=dateTimeFormatter.format(nu);
     }
@@ -26,5 +30,9 @@ public class Review {
 
     public String getDatum() {
         return datum;
+    }
+
+    public String getGebruikersNaam() {
+        return gebruikersNaam;
     }
 }
