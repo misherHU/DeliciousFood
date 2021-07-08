@@ -84,6 +84,7 @@
       <version>RELEASE</version>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 
   <build>
