@@ -96,7 +96,7 @@ public class MyServletContextListener implements ServletContextListener {
 
             PersistenceManager.loadAccountenFromAzure();
             PersistenceManager.loadReceptenFromAzure();
-
+            System.out.println("staarting.....");
         } catch (Exception e) {
             System.out.println("Error loading world: " + e.getMessage());
         }
