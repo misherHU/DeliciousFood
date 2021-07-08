@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class PersistenceManager {
     private static final String ENDPOINT = "https://misherblopstorage.blob.core.windows.net/";
-    private static final String SASTOKEN = "?sv=2020-02-10&ss=bfqt&srt=sco&sp=rwdlacuptfx&se=2021-07-08T23:54:44Z&st=2021-06-08T15:54:44Z&spr=https&sig=bVE1%2FGZldyLb1oFfVlmn5TH3ewQKMDGbMvXUDbSx%2FKs%3D";
+    private static final String SASTOKEN = "?sv=2020-08-04&ss=bfqt&srt=sco&sp=rwdlacuptfx&se=2021-11-08T11:04:18Z&st=2021-07-08T02:04:18Z&spr=https&sig=QThkqfNu61rjjUFWB%2F7dQOmbaKMzbek%2FoAY5ZJYSb9I%3D";
     private static final String CONTAINER = "ipass";
 
     private static BlobContainerClient blobContainer = new BlobContainerClientBuilder()
